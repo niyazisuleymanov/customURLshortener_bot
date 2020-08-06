@@ -3,3 +3,4 @@
 /.blackbox/secring.gpg
 data.py
 __pycache__
+.vscode
