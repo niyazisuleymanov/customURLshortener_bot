@@ -1,3 +1,5 @@
 /.blackbox/pubring.gpg~
 /.blackbox/pubring.kbx~
 /.blackbox/secring.gpg
+data.py
+__pycache__/data.py
