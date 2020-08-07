@@ -1,7 +1,5 @@
 # Custom URL Shortener Bot
 
-## Description
-
 Custom Telegram bot to shorten URLs. Check it out at <https://t.me/customurlshortener_bot>.
 
 ## Features
