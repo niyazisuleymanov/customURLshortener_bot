@@ -2,7 +2,13 @@
 
 ## Description
 
-Custom Telegram bot to shorten URLs.
+Custom Telegram bot to shorten URLs. Check it out at <https://t.me/customshorturl_bot>.
+
+## Features
+
+- Shortens user given URL.
+
+- Detects if certain URL doesn't exist or is uncreachable.
 
 ## Credits
 
