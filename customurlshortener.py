@@ -18,13 +18,10 @@ def shorten(update, context):
         'Content-Type': 'application/json',
     }
     link = update.message.text 
-    if link[0:7] != 'http://' or link[0:7] != 'https://':
+    if link[0:4] != 'http':
         link = 'http://' + link
     try:
         link = requests.get(link)
-    except requests.exceptions.ConnectionError:
-        update.message.reply_text('Website not found! Enter another URL.')
-    else:
         link = link.url
         data = {
             'long_url': f'{link}'
@@ -33,6 +30,8 @@ def shorten(update, context):
         response = requests.post('https://api-ssl.bitly.com/v4/shorten', headers = headers, data = data)
         json_data = json.loads(response.text)
         update.message.reply_text(json_data['id'])
+    except requests.exceptions.ConnectionError:
+        update.message.reply_text('Website not found! Enter another URL.')
 
 def main():
     # creating the Updater and passing bot's token
