@@ -10,4 +10,6 @@ Custom Telegram bot to shorten URLs. Check it out at <https://t.me/customurlshor
 
 ## Credits
 
-This bot was created using [python-telegram-bot.](<https://github.com/python-telegram-bot/python-telegram-bot>)
+- URL shortener uses [bit.ly](https://bitly.com) API.
+
+- Bot created using [python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot).
