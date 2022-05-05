@@ -4,7 +4,6 @@ import json
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 from data import *
 
-# Enable logging
 logging.basicConfig(format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level = logging.INFO)
 logger = logging.getLogger(__name__)
@@ -34,21 +33,15 @@ def shorten(update, context):
         update.message.reply_text('Website not found! Enter another URL.')
 
 def main():
-    # creating the Updater and passing bot's token
     updater = Updater(f'{TELEGRAM_BOT_API_KEY}', use_context = True)
     
-    # registering handlers
     dp = updater.dispatcher
 
-    # commands and answers in Telegram
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(MessageHandler(Filters.text & ~Filters.command, shorten))
 
-    # start the bot 
     updater.start_polling()
 
-    # Block until you press Ctrl-C or the process receives SIGINT, 
-    # SIGTERM or SIGABRT
     updater.idle()
 
 if __name__ == '__main__':
