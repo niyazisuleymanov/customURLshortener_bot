@@ -1,8 +1,12 @@
 import logging
 import requests
 import json
+import os
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
-from data import *
+
+PORT = int(os.environ.get('PORT', '5000'))
+TELEGRAM_BOT_API_KEY = os.environ.get('TELEGRAM_BOT_API_KEY', None)
+BITLY_API_KEY = os.environ.get('BITLY_API_KEY', None)
 
 logging.basicConfig(format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level = logging.INFO)
@@ -38,9 +42,14 @@ def main():
     dp = updater.dispatcher
 
     dp.add_handler(CommandHandler("start", start))
-    dp.add_handler(MessageHandler(Filters.text & ~Filters.command, shorten))
+    dp.add_handler(MessageHandler(Filters.text, shorten))
 
-    updater.start_polling()
+    updater.start_webhook(
+      listen="0.0.0.0",
+      port=PORT,
+      url_path=TELEGRAM_BOT_API_KEY,
+      webhook_url='https://customurlshortener.herokuapp.com/' + TELEGRAM_BOT_API_KEY
+    )
 
     updater.idle()
 
